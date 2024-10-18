@@ -1,4 +1,4 @@
-package com.vcitdevproblem;
+package com.vcitdevproblem.web.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vcitdevproblem.dto.ClientDTO;

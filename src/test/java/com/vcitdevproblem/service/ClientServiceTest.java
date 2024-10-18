@@ -1,4 +1,4 @@
-package com.vcitdevproblem;
+package com.vcitdevproblem.service;
 
 import com.vcitdevproblem.dto.ClientDTO;
 import com.vcitdevproblem.dto.ClientRequest;
@@ -6,11 +6,9 @@ import com.vcitdevproblem.exception.ClientNotFoundException;
 import com.vcitdevproblem.exception.DuplicateIdException;
 import com.vcitdevproblem.exception.DuplicateMobileNumberException;
 import com.vcitdevproblem.exception.InvalidIdNumberException;
-import com.vcitdevproblem.service.ClientService;
 import com.vcitdevproblem.util.MockDataProvider;
 import com.vcitdevproblem.util.validation.IdNumberValidator;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
