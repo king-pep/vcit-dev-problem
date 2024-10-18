@@ -5,6 +5,7 @@ import com.vcitdevproblem.exception.ClientNotFoundException;
 import com.vcitdevproblem.exception.DuplicateIdException;
 import com.vcitdevproblem.exception.DuplicateMobileNumberException;
 import com.vcitdevproblem.exception.InvalidIdNumberException;
+import com.vcitdevproblem.mapper.ClientMapper;
 import com.vcitdevproblem.model.Client;
 import com.vcitdevproblem.util.validation.IdNumberValidator;
 import org.springframework.stereotype.Service;

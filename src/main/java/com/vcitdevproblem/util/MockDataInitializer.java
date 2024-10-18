@@ -2,9 +2,8 @@ package com.vcitdevproblem.util;
 
 
 import com.vcitdevproblem.dto.ClientDTO;
-import com.vcitdevproblem.dto.ClientRequest;
 import com.vcitdevproblem.model.Client;
-import com.vcitdevproblem.service.ClientMapper;
+import com.vcitdevproblem.mapper.ClientMapper;
 import com.vcitdevproblem.service.ClientService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;

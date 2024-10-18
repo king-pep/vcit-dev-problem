@@ -1,4 +1,4 @@
-package com.vcitdevproblem.service;
+package com.vcitdevproblem.mapper;
 
 import com.vcitdevproblem.dto.ClientDTO;
 import com.vcitdevproblem.model.Client;
