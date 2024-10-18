@@ -63,7 +63,7 @@ public class ClientControllerTest {
      * @throws Exception if there is a problem with the mock request
      */
     @Test
-     void testUpdateClientSuccess() throws Exception {
+    void testUpdateClientSuccess() throws Exception {
         ClientRequest clientRequest = MockDataProvider.getMockClientRequest1();
         ClientDTO updatedClientResponse = MockDataProvider.getMockClientResponse1();
 
@@ -103,7 +103,7 @@ public class ClientControllerTest {
      * @throws Exception if there is a problem with the mock request
      */
     @Test
-     void testDuplicateIdThrowsException() throws Exception {
+    void testDuplicateIdThrowsException() throws Exception {
         ClientRequest clientRequest = MockDataProvider.getMockClientRequest1();
 
         when(clientService.createClient(any(ClientRequest.class))).thenThrow(new DuplicateIdException("Duplicate ID number found."));
@@ -117,12 +117,47 @@ public class ClientControllerTest {
     }
 
     /**
+     * Test successful client search by first name, ID number, and mobile number.
+     *
+     * @throws Exception if there is a problem with the mock request
+     */
+    @Test
+    public void testSearchClientByFirstNameIdAndMobileSuccess() throws Exception {
+        ClientDTO clientResponse = MockDataProvider.getMockClientResponse1();
+
+        when(clientService.searchClient(
+                any(Optional.class), any(Optional.class), any(Optional.class))
+        ).thenReturn(clientResponse);
+
+        mockMvc.perform(get("/v1/clients/search")
+                        .param("firstName", "John"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.resultCode").value(0))
+                .andExpect(jsonPath("$.payload.firstName").value("John"))
+                .andExpect(jsonPath("$.payload.lastName").value("Doe"));
+
+        mockMvc.perform(get("/v1/clients/search")
+                        .param("idNumber", "9001015800083"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.resultCode").value(0))
+                .andExpect(jsonPath("$.payload.firstName").value("John"))
+                .andExpect(jsonPath("$.payload.lastName").value("Doe"));
+
+        mockMvc.perform(get("/v1/clients/search")
+                        .param("phoneNumber", "0712345678"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.resultCode").value(0))
+                .andExpect(jsonPath("$.payload.firstName").value("John"))
+                .andExpect(jsonPath("$.payload.lastName").value("Doe"));
+    }
+
+    /**
      * Test that searching for a client with a non-existent ID throws a ClientNotFoundException.
      *
      * @throws Exception if there is a problem with the mock request
      */
     @Test
-     void testSearchClientNotFound() throws Exception {
+    void testSearchClientNotFound() throws Exception {
         when(clientService.searchClient(
                 any(Optional.class),
                 any(Optional.class),

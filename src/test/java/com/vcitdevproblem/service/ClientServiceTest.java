@@ -25,7 +25,7 @@ import static org.mockito.Mockito.*;
 @SpringBootTest
 public class ClientServiceTest {
 
-    @MockBean // Use MockBean to mock the ClientService
+    @MockBean
     private ClientService clientService;
 
     /**
